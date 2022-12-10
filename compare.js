@@ -39,10 +39,16 @@ window.onload = function onload() {
 }
 
 function storeValue() {
-    let checkedValues = document.querySelector(".checkbox").checked
+    let inputElements = document.getElementsByClassName("checkbox")
+    let checkedValues = []
+    for (input of inputElements) {
+        if (input.checked) {
+            checkedValues.push(input.value)
+        }
+    }
     for (let checkedValue of checkedValues) {
         let paragraph = document.createElement("p")
-        paragraph.innerHTML = `${checkedValue.target.id}`
-        document.body.appendChild(paragraph)
+        paragraph.innerHTML = `${checkedValue}`
+        document.getElementById('result').appendChild(paragraph)
     }
 }
